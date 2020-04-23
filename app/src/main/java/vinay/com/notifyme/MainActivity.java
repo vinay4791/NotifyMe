@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initialize();
+        setNotificationButtonState(true, false, false);
 
         createNotificationChannel();
     }
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void sendNotification() {
         NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+        setNotificationButtonState(false, true, true);
     }
 
     //function for updating notification
@@ -61,13 +63,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .bigPicture(mascotImage)
                 .setBigContentTitle("Notification Updated!"));
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
-
+        setNotificationButtonState(false, false, true);
 
     }
 
     //function for cancelling notification
     public void cancelNotification() {
         mNotifyManager.cancel(NOTIFICATION_ID);
+        setNotificationButtonState(true, false, false);
+
     }
 
     //Creating a notification channel
@@ -104,6 +108,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return notifyBuilder;
     }
 
+    void setNotificationButtonState(Boolean isNotifyEnabled,
+                                    Boolean isUpdateEnabled,
+                                    Boolean isCancelEnabled) {
+        button_notify.setEnabled(isNotifyEnabled);
+        button_update.setEnabled(isUpdateEnabled);
+        button_cancel.setEnabled(isCancelEnabled);
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -120,6 +132,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
-
     }
 }
