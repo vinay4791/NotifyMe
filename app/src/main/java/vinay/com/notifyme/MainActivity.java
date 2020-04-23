@@ -15,7 +15,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button button_notify;
-    private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
+    private static final String PRIMARY_CHANNEL_ID = "notification_channel";
     private NotificationManager mNotifyManager;
     private static final int NOTIFICATION_ID = 0;
 
