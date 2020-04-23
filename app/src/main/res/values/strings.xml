@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">NotifyMe</string>
+    <string name="notify_me_text">Notify Me!</string>
+    <string name="update_me_text">Update Me!</string>
+    <string name="cancel_me_text">Cancel Me!</string>
 </resources>
